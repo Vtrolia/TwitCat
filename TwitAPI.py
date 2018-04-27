@@ -29,33 +29,33 @@ def get_data(subject, api, user):
     top_users = api.GetUsersSearch(term=subject, count=10, include_entities=True)
     for follower in followers:
         try:
-            ret_data(follower, 0, api, final_data)
+            ret_data(follower, 0, api)
             final_data[follower.id] = follower
         except:
             pass
     for friend in friends:
         try:
-            ret_data(friend, 0, api, final_data)
+            ret_data(friend, 0, api)
             final_data[friend.id] = friend
         except:
             pass
     for user in top_users:
         try:
-            ret_data(user, 0, api, final_data)
+            ret_data(user, 0, api)
             final_data[user.id] = user
         except:
             pass
     return final_data
 
 
-def ret_data(ID, depth, api, final_data):
+def ret_data(ID, depth, api):
     """ A Depth First Search that looks for users related to the one entered in the search, then adds them to the
         final dictionaries of users. Does not return anything, merely appends to the entered final_data dictionary
     """
     if depth > DEPTH_LIMIT:
         return
     for friend in api.GetFriends(user_id=ID.id, total_count=10):
-        ret_data(friend, depth + 1, api, final_data)
+        ret_data(friend, depth + 1, api)
         final_data[friend.id] = friend
     final_data[ID.id] = ID
 
