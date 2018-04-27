@@ -58,8 +58,18 @@ def ret_data(ID, depth, api):
         ret_data(friend, depth + 1, api)
         final_data[friend.id] = friend
     final_data[ID.id] = ID
-
-
+    
+    
+def get_tweets(api, user):
+    """Enter the active API, and the userID you want to grab the tweets for, then looks up and returns a list
+        of the users tweets, up to the last 200
+    """
+    tweets = []
+    for status in api.GetUserTimeline(user_id=user):
+        tweets.append(status.text)
+    return tweets
+    
+    
 def make_follow(users, consumer_key, consumer_secret, access_id, access_secret):
     """ takes in the recommended users from logic.py and user login credentials along with API credentials and
         sets the user to follow all of the recommended users, returns True if sucessfull, else False
