@@ -21,8 +21,8 @@ final_data = dict()
 def get_data(subject, api, user):
     """ Takes in the subject the user wants to search for, the API given by start_api as well as the user's name.
         Utilizes DFS algorithm ret_data to find friends of friends and also of those who are popular among the subject
-        searched for and adds them to final_dict. Returns a dictionary of userIDs, which contain dictionaries
-        of the separate attributes for each user found.
+        searched for and adds them to final_dict. Returns a dictionary of userIDs, which contain JSON objects containing
+        the separate attributes for each user found.
     """
     followers = api.GetFollowers(screen_name=user, total_count=200)
     friends = api.GetFriends(screen_name=user, total_count=200)
