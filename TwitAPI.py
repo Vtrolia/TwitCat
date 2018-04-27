@@ -5,8 +5,8 @@ DEPTH_LIMIT = 4
 
 
 def start_api(consumerID, consumerSECRET, accessID, accessSECRET):
-    """ Returns the usable Twitter API that runs the front-end of TwitCat. Utilizes the access token credentials and
-        also end user info if it is so implimented. Returns the username and the api connection to Twitter to be used
+    """ Returns the usable Twitter API that runs the front-end of TwitCat. Utilizes the access token credentials.
+        Returns the username and the api connection to Twitter to be used
         in the future
     """
     api = pt.Api(consumer_key=consumerID, consumer_secret=consumerSECRET, access_token_key=accessID,
@@ -50,7 +50,7 @@ def get_data(subject, api, user):
 
 def ret_data(ID, depth, api):
     """ A Depth First Search that looks for users related to the one entered in the search, then adds them to the
-        final dictionaries of users. Does not return anything, merely appends to the entered final_data dictionary
+        final dictionaries of users. Does not return anything, merely appends to the final_data dictionary
     """
     if depth > DEPTH_LIMIT:
         return
