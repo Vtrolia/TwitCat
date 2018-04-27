@@ -11,7 +11,7 @@ def start_api(consumerID, consumerSECRET, accessID, accessSECRET):
     """
     api = pt.Api(consumer_key=consumerID, consumer_secret=consumerSECRET, access_token_key=accessID,
                  access_token_secret=accessSECRET, sleep_on_rate_limit=True)
-    user = input("enter your username: ")
+    user = input("enter your username (do not include @): ")
     return api, user
 
 # the resulting dictionary that is used in get_data. used as a global so that scope is not an issue
